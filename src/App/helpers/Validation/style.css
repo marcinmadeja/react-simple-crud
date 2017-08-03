@@ -1,0 +1,29 @@
+.jV-alertContainer {
+  margin-top: 20px;
+}
+
+.jV-error {
+  border-color: #c74343!important;
+}
+
+.jV-alert {
+  max-width: 550px;
+  margin-bottom: 5px;
+  padding: 10px 30px;
+  border: 1px solid #000;
+
+  color: #000;
+  text-align: center;
+}
+
+.jV-alert__error {
+  border-color: 1px solid #c51b1b;
+  background: #c74343;
+  color: #fff;
+}
+
+.jV-alert__success {
+  border-color: #38941d;
+  background: #61c743;
+  color: #fff;
+}

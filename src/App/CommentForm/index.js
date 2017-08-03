@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './style.css';
 
-import Validation from '../helpers/Validation';
+import Validation from './../helpers/Validation';
+import Alert from './../helpers/Validation/Alert';
 
 class CommentForm extends Component {
   constructor(props) {
@@ -17,6 +18,15 @@ class CommentForm extends Component {
     this.createComment = this.createComment.bind(this);
   }
 
+  componentDidMount() {
+    this.initValidation();
+  }
+
+  initValidation() {
+    const alertContainer = document.querySelector('.comment-details');
+    Validation.initValidation({ alertContainer });
+  }  
+
   createComment(e) {
     e.preventDefault();
     const comment = { 
@@ -25,17 +35,16 @@ class CommentForm extends Component {
       body: this.detailsBody.value,
     };
 
-    // const validate = [
-    //   {va}
-    // ]
-
-    if (Validation.isEmail(comment.email)) {
+    const form = e.target;
+    const isValid = Validation.validateForm(form);
+    if (isValid) {
       this.props.createComment(comment);
       this.detailsEmail.value = '';
       this.detailsName.value = '';
       this.detailsBody.value = '';
-    } else {
-      alert('Dodaj email');
+
+      const successMsg = Alert.createMsg('Comment added', 'success');
+      Alert.addAlertToContainer(successMsg);
     }
   }
 
@@ -47,18 +56,19 @@ class CommentForm extends Component {
       body: this.detailsBody.value,
     };
     const form = e.target;
+    const isValid = Validation.validateForm(form);
 
-    const errorMsg = Validation.validateForm(form);
-
-    if (Validation.isEmail(comment.email)) {
+    if (isValid) {
       this.props.updateComment(comment);
-    } else {
-      alert('Dodaj email');
+      const successMsg = Alert.createMsg('Comment was updated', 'success');
+      Alert.addAlertToContainer(successMsg);
     }
   }
 
   removeComment() {
     this.props.removeComment();
+    const successMsg = Alert.createMsg('Comment was successfully removed.', 'success');
+    Alert.addAlertToContainer(successMsg);    
   }
 
   renderButtons() {
@@ -100,6 +110,7 @@ class CommentForm extends Component {
               defaultValue={comment.email} 
               ref={(input) => { this.detailsEmail = input; }}
               type="text" 
+              name="email"
               data-jvalid="required email"
             />
           </div>
@@ -111,6 +122,7 @@ class CommentForm extends Component {
               defaultValue={comment.name} 
               ref={(input) => { this.detailsName = input; }}
               type="text" 
+              name="name"
               data-jvalid="required"
             />
           </div>
@@ -122,6 +134,7 @@ class CommentForm extends Component {
               defaultValue={comment.body} 
               ref={(input) => { this.detailsBody = input; }}
               type="text" 
+              name="body"
               data-jvalid="required"
             />
           </div>
