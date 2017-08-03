@@ -1,0 +1,16 @@
+.comment-list__th {
+  cursor: pointer;
+  transition: 0.25s all;
+}
+
+.comment-list__th:hover {
+  color: #4285f4;
+}
+
+.comment-list__link {
+  transition: 0.25s all;
+}
+
+.comment-list__link:hover {
+  color: #4285f4;
+}

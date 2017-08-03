@@ -1,0 +1,19 @@
+.comment-form__group {
+  margin-bottom: 20px;
+}
+
+.comment-form__label {
+  width: 100px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.comment-form__input {
+  width: 450px;
+  padding: 7px;
+  border: 1px solid #ccc;
+}
+
+.comment-form__input--textarea {
+  height: 120px;
+}

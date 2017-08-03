@@ -1,0 +1,20 @@
+.l-header {
+  background: #fff;
+  margin-bottom: 20px;
+}
+
+.l-nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  line-height: 45px;
+}
+
+.l-nav__item {
+  display: inline-block;
+}
+
+.l-nav__link {
+  font-size: 20px;
+  text-transform: uppercase;
+}

@@ -1,0 +1,29 @@
+.commentMenu {
+  background: #F8F8F8;
+  margin: 0 -15px;
+  padding: 15px;
+}
+
+.commentMenu__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.commentMenu__item {
+  margin-right: 40px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.commentMenu__item i {
+  margin-right: 15px;
+}
+
+.commentMenu__link {
+  transition: 0.25s all;
+}
+
+.commentMenu__link:hover {
+  color: #4285f4;
+}
